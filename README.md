@@ -1,135 +1,147 @@
-Here's a detailed README for the backend of your CRM MERN project. This README will guide other developers or yourself in the future, providing an understanding of how to set up and run the project.
+## CRM Application (MERN Stack)
+
+### Overview
+This CRM application helps manage customer profiles with features such as login/registration, CRUD operations for customer data, role-based access, and analytics. The stack is built using the MERN (MongoDB, Express.js, React.js, Node.js) framework.
 
 ---
 
-# CRM MERN Backend
+### Frontend (React.js + Bootstrap)
 
-This is the backend part of a CRM (Customer Relationship Management) system for the textile industry, built with Node.js, Express.js, and MongoDB. The backend provides APIs to manage customer profiles, track customer communication, manage sources, statuses, follow-ups, and generate reports and analytics.
+#### Technologies
+- **React.js**: Component-based UI framework.
+- **Bootstrap**: For responsive design.
+- **React Router**: For client-side routing.
+- **Axios**: For making HTTP requests to the backend.
 
-## Table of Contents
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Environment Variables](#environment-variables)
-- [Running the Server](#running-the-server)
-- [API Endpoints](#api-endpoints)
-- [Security](#security)
-- [Contributing](#contributing)
-- [License](#license)
+#### Folder Structure
+- **`client/src/`**: Contains all React components and configuration files.
+- **`components/`**: Reusable components like forms, buttons, customer cards, etc.
+- **`pages/`**: Pages like login, dashboard, customer profile management, etc.
 
-## Features
-- **Customer Management**: Create, read, update, and delete customer profiles.
-- **Track Communication**: Track follow-ups, meetings, emails, and more with customers.
-- **Role-Based Access Control (RBAC)**: Different roles for admin, manager, and sales teams.
-- **Reports and Analytics**: Generate reports based on CRM data, such as lead conversion rates and sales performance.
-- **Secure Authentication**: Implemented with JWT tokens and password hashing using `bcrypt`.
+#### Steps to Run Frontend
 
-## Tech Stack
-- **Node.js**: Server-side JavaScript runtime.
-- **Express.js**: Web framework for Node.js to handle routing and middleware.
-- **MongoDB**: NoSQL database for data storage.
-- **Mongoose**: ODM for MongoDB to manage database interactions.
-- **JWT (JSON Web Tokens)**: For secure authentication and authorization.
-- **bcrypt**: For password hashing and encryption.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Sridharraj2023/CRM-MERN-Front-End.git
+   cd CRM-MERN-Front-End
+   ```
 
-## Prerequisites
-Ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- [MongoDB](https://www.mongodb.com/) (Local or Cloud-based instance)
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Installation
-### 1. Clone the repository
-```bash
-git clone https://github.com/Sridharraj2023/CRM-MERN-Back-End.git
-cd CRM-MERN-Back-End
-```
+3. **Run Frontend**:
+   - Make sure the backend server is running on port `3000`.
+   - Start the React frontend using:
+     ```bash
+     npm start
+     ```
+   - The frontend will now be running on `http://localhost:3000`.
 
-### 2. Install dependencies
-Make sure you're in the backend directory and install the required dependencies:
-```bash
-npm install
-```
+4. **Environment Variables (Optional)**:
+   You can create a `.env` file for any environment-specific variables. By default, it will interact with the backend on `http://localhost:3000`.
 
-### 3. Set up MongoDB
-If using a local MongoDB server, ensure it's running, or use a cloud-based solution like MongoDB Atlas.
+#### Features:
+- **User Registration & Login**: Allow users to sign up and log in securely.
+- **Dashboard**: Displays customer profiles and allows for managing customer details.
+- **CRUD Operations**: Users can create, view, edit, and delete customer data.
+- **Role-based Access Control**: Limits certain features based on the user's role.
+- **Bootstrap Integration**: Ensures the app is fully responsive for all devices.
+  
+---
 
-## Environment Variables
-You need to create a `.env` file in the root directory with the following environment variables:
+### Backend (Node.js + Express.js + MongoDB)
 
-```bash
-# Server Configurations
-PORT=5000
+#### Technologies
+- **Node.js**: JavaScript runtime for the backend server.
+- **Express.js**: Framework to handle HTTP requests and routing.
+- **MongoDB**: NoSQL database for storing customer data.
+- **JWT (JSON Web Tokens)**: For secure authentication and session management.
+- **bcrypt**: For hashing passwords.
 
-# MongoDB URI
-MONGODB_URI=mongodb://localhost:27017/crm_mern
+#### Folder Structure
+- **`server/`**: Contains all backend files, including routes, models, and controllers.
+- **`routes/`**: API endpoints for user authentication and customer management.
+- **`models/`**: Mongoose models for users and customers.
+- **`controllers/`**: Contains logic for handling user and customer requests.
 
-# JWT Secret for Token Generation
-JWT_SECRET=your_jwt_secret
+#### Steps to Run Backend
 
-# Optional: for email (if using email services like Nodemailer)
-EMAIL_HOST=smtp.example.com
-EMAIL_PORT=587
-EMAIL_USER=your_email@example.com
-EMAIL_PASS=your_email_password
-```
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Sridharraj2023/CRM-MERN-Back-End.git
+   cd CRM-MERN-Back-End
+   ```
 
-> **Note:** Replace the values of `JWT_SECRET`, `MONGODB_URI`, and email settings with your own.
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Running the Server
+3. **Create `.env` File**:
+   - In the `server/` directory, create a `.env` file and add the following:
+     ```
+     MONGO_URI=your_mongodb_connection_string
+     JWT_SECRET=your_jwt_secret_key
+     PORT=port_number
+     ```
+   - **MONGO_URI**: Replace with your MongoDB connection string.
+   - **JWT_SECRET**: Replace with a secure random string.
 
-### 1. Start the Development Server
-You can run the backend server in development mode using:
-```bash
-npm run dev
-```
-The server will start at `http://localhost:5000` by default.
+4. **Run Backend**:
+   Start the backend server using:
+   ```bash
+   npm run dev
+   ```
+   The backend will now be running on `http://localhost:3000`.
 
-### 2. Production Build
-To run in production mode:
-```bash
-npm start
-```
+#### Features:
+- **User Authentication**: Secure login and registration with JWT for session management.
+- **Password Hashing**: Passwords are securely stored using `bcrypt`.
+- **Customer Management**: Provides full CRUD functionality for customer profiles.
+- **Error Handling**: Proper error handling for all API requests.
+- **API Endpoints**:
+  - `/api/auth/register`: For user registration.
+  - `/api/auth/login`: For user login.
+  - `/api/customers`: For customer profile management (CRUD operations).
 
-## API Endpoints
+---
 
-Here is a summary of some available endpoints:
+### Full Application Setup
 
-### Authentication
-- `POST /api/auth/register`: Register a new user.
-- `POST /api/auth/login`: Login a user and get a JWT token.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Sridharraj2023/CRM-MERN-Front-End.git
+   git clone https://github.com/Sridharraj2023/CRM-MERN-Back-End.git
+   cd CRM_MERN
+   ```
 
-### Customers
-- `GET /api/customers`: Get all customers.
-- `POST /api/customers`: Create a new customer.
-- `GET /api/customers/:id`: Get a specific customer by ID.
-- `PUT /api/customers/:id`: Update a specific customer by ID.
-- `DELETE /api/customers/:id`: Delete a customer.
+2. **Backend Setup**:
+   - Navigate to `server` and follow the backend instructions to install dependencies, set up the `.env` file, and run the backend.
 
-### Communication and Follow-up
-- `POST /api/customers/:id/communication`: Add a communication entry for a customer.
-- `GET /api/customers/:id/communication`: Get all communications for a customer.
+3. **Frontend Setup**:
+   - Navigate to `client` and install the dependencies. Start the frontend as explained in the frontend setup section.
 
-### Reports and Analytics
-- `GET /api/reports/sales`: Get sales performance report.
-- `GET /api/reports/conversions`: Get lead conversion rates.
+4. **Start Both Servers**:
+   - Backend: Run `npm run dev` in `server`.
+   - Frontend: Run `npm start` in `client`.
 
-## Security
-- **Authentication**: The app uses JWT (JSON Web Token) for authentication.
-- **Password Hashing**: Passwords are hashed using `bcrypt` to ensure user security.
-- **Authorization**: Role-based access control to restrict specific endpoints to authorized users (e.g., admin-only routes).
+5. **Access the Application**:
+   - Open the frontend in your browser: `http://localhost:3000`.
+   - The backend API will be available at `http://localhost:3000`.
 
-## Contributing
-Contributions are welcome! If you'd like to contribute, please fork the repository, make your changes, and submit a pull request.
+---
 
-### Steps to Contribute:
+### Contributing
+To contribute to this project:
 1. Fork the repository.
-2. Create a feature branch: `git checkout -b feature-name`.
-3. Commit your changes: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin feature-name`.
-5. Open a pull request.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes and commit (`git commit -m 'Add some feature'`).
+4. Push the branch (`git push origin feature/YourFeature`).
+5. Create a pull request.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### License
+This project is licensed under the MIT License.
 
 ---
