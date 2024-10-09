@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('tiny'));
 
-// Load environment variables
+// Load environment variable
 dotenv.config();
 
 // Routes
